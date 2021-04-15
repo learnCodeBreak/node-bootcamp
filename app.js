@@ -1,10 +1,12 @@
 const http = require('http');
 
 const server = http.createServer((req, res) => {
-    console.log(`Request URL: ${req.url}`);
-    console.log(`Request Method: ${req.method}`);
-    console.log('Request Headers: ', req.headers);
-    console.log(`Request Raw Headers: ${req.rawHeaders}`);
+    res.setHeader('Content-Type', 'text/html');
+    res.write('<html>');
+    res.write('<head><title>My First Response</title></head>');
+    res.write('<body><h1>Hello from Nodejs Server</h1></body>');
+    res.write('</html>');
+    res.end();
 });
 
 server.listen(3000, () => {
