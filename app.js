@@ -10,6 +10,8 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));    // This will expose public folder
 
+app.set('view engine', 'pug');
+app.set('views', 'views');
 
 app.use('/admin',adminData.routes);
 app.use(shopRoutes);
