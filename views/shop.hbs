@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <title>{{ pageTitle }}</title>
     <link rel="stylesheet" href="/css/main.css">
 </head>
+
 <body>
     <header class="main-header">
         <nav class="main-header__nav">
@@ -18,8 +20,17 @@
     </header>
 
     <main>
-        <h1>My Products</h1>
-        <p>List of all products...</p>
+        {{#if havingProducts}}
+            <div class="product-container">
+                <h2>Product List</h2>
+                    {{#each prods}}
+                        <h3>{{ this.title }}</h3>
+                    {{/each}}
+            </div>
+        {{else}}
+            <h1 class="no-product">No products! Please add one</h1>
+        {{/if}}
     </main>
 </body>
+
 </html>
