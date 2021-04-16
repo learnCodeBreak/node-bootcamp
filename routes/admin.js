@@ -12,7 +12,7 @@ const router = express.Router(); // this is a mini express app which will handle
 const products = [];
 
 router.get('/add-product', (req, res, next) => {
-    res.render('add-product', { pageTitle: 'Add Product' });
+    res.render('add-product', {pageTitle: 'Add Product', path: '/admin/add-product'});
 });
 
 router.post('/add-product', (req, res) => {
