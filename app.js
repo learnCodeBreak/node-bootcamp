@@ -14,8 +14,5 @@ app.use((req, res, next) => {
     res.send('<h1>Hello from Express!, res.send() method is an utility function provided by Express</h1>')
 })
 
-const server = http.createServer(app);
-
-server.listen(3000, () => {
-    console.log(`Server is running at http://localhost:3000`);
-})  
+// NOTE: Express app object will handle both like creating server as well as listening to it
+app.listen(3000);
