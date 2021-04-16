@@ -4,12 +4,13 @@
  */
 
 const express = require('express');
+const path = require('path');
 
-const router = express.Router(); // this is a mini express app which will handles the routing of app
+const router = express.Router();
 
 
 router.get('/', (req, res, next) => {
-    res.send('<h1>This is home route</h1>');
+    res.sendFile(path.join(__dirname, '../', 'views', 'shop.html'));
 });
 
 module.exports = router;
