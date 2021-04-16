@@ -1,17 +1,16 @@
 const http = require('http');
 const express = require('express');
 
-const app = express();  // creates an express application
+const app = express();
 
-// NOTE: Middleware is something which procees the request before sending response
-app.use((req, res, next) => {
-    console.log('In a middleware');
-    next(); // This allows the request to continue to next middleware in line
+app.use('/add-product', (req, res, next) => {
+    console.log('In another middleware');
+    res.send('<h1>This is Add Product route</h1>');
 });
 
-app.use((req, res, next) => {
+app.use('/', (req, res, next) => {
     console.log('In another middleware');
-    res.send('<h1>Hello from Express!, res.send() method is an utility function provided by Express</h1>')
+    res.send('<h1>This is home route</h1>');
 })
 
 // NOTE: Express app object will handle both like creating server as well as listening to it
