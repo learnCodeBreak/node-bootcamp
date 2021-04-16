@@ -1,0 +1,23 @@
+{
+  "name": "node-bootcamp",
+  "version": "1.0.0",
+  "description": "Complete Nodejs developer course",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/learnCodeBreak/node-bootcamp.git"
+  },
+  "author": "Dhirendra Kumar Prajapati",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/learnCodeBreak/node-bootcamp/issues"
+  },
+  "homepage": "https://github.com/learnCodeBreak/node-bootcamp#readme",
+  "dependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
