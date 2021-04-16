@@ -9,14 +9,16 @@ const rootDir = require('../util/path');
 
 const router = express.Router(); // this is a mini express app which will handles the routing of app
 
+const products = [];
 
-router.get('/admin/add-product', (req, res, next) => {
+router.get('/add-product', (req, res, next) => {
     res.sendFile(path.join(rootDir, 'views', 'add-product.html'));
 });
 
-router.post('/admin/add-product', (req, res) => {
-    console.log(req.body);
+router.post('/add-product', (req, res) => {
+    products.push({ title: req.body.title });
     res.redirect('/');
 });
 
-module.exports = router;
+exports.products = products;
+exports.routes = router;
