@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const errorController = require('./controllers/error');
 
 const app = express();
 
@@ -19,11 +20,6 @@ app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
 // This is a fallback route when router does not match with any path provided by user
-app.use((req, res, next) => {
-    res.status(404).render('404', {
-        pageTitle: 'Not Found',
-        path: null
-    });
-});
+app.use(errorController.get404);
 
 app.listen(3000);
