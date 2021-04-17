@@ -4,28 +4,14 @@
  */
 
 const express = require('express');
-const path = require('path');
-const rootDir = require('../util/path');
+const productsController = require('../controllers/products');
 
-const router = express.Router(); // this is a mini express app which will handles the routing of app
+const router = express.Router();
 
-const products = [];
+// /admin/add-preoduct => GET
+router.get('/add-product', productsController.getAddProduct);
 
-router.get('/add-product', (req, res, next) => {
-    res.render('add-product', {
-        pageTitle: 'Add Product',
-        path: '/admin/add-product',
-        activeAddProduct: true,
-        productCSS: true
-    });
-});
+// /admin/add-product => POST
+router.post('/add-product', productsController.postAddProduct);
 
-router.post('/add-product', (req, res) => {
-    products.push({
-        title: req.body.title
-    });
-    res.redirect('/');
-});
-
-exports.products = products;
-exports.routes = router;
+module.exports = router;
