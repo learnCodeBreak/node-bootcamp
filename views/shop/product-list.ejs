@@ -1,5 +1,5 @@
 <%- include('../includes/head.ejs') %>
-<link rel="stylesheet" href="/css/form.css">
+<link rel="stylesheet" href="/css/product.css">
 </head>
 
 <body>
@@ -25,6 +25,7 @@
                     </p>
                 </div>
                 <div class="card__actions">
+                    <a class="btn" href="/product/<%= product.id %>">Details</a>
                     <form action="/add-to-cart" method="POST">
                         <button class="btn">Add to Cart</button>
                     </form>
