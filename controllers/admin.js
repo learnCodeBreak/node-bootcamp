@@ -32,12 +32,16 @@ exports.getEditProduct = (req, res, next) => {
         }
 
         res.render('admin/edit-product', {
-            pageTitle: 'Add Product',
+            pageTitle: 'Edit Product',
             path: '/admin/edit-product',
             editing: editMode,
             product: product
         });
     })
+}
+
+exports.postEditProduct = (req, res, next) => {
+    console.log('Request: ', req.body);
 }
 
 exports.getProducts = (req, res, next) => {
