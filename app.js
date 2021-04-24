@@ -12,7 +12,13 @@ app.set('views', 'views');
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
+// Connecting with database
 db.execute('SELECT * FROM products')
+    .then(result => {
+        console.log(result);
+    }).catch(err => {
+        console.log(err);
+    })
 
 app.use(bodyParser.urlencoded({
     extended: false
