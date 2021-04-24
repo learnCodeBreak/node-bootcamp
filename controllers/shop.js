@@ -10,9 +10,7 @@ exports.getIndex = (req, res, next) => {
                 path: '/'
             })
         })
-        .catch(err => {
-            console.log(err);
-        });
+        .catch(console.log);
 }
 
 exports.getProducts = (req, res, next) => {
@@ -24,20 +22,20 @@ exports.getProducts = (req, res, next) => {
                 path: '/products'
             });
         })
-        .catch(err => {
-            console.log(err);
-        });
+        .catch(console.log);
 }
 
 exports.getProduct = (req, res, next) => {
     const prodId = req.params.productId;
-    Product.findByID(prodId, (product) => {
-        res.render('shop/product-detail', {
-            product: product,
-            pageTitle: product.title,
-            path: '/products'
-        });
-    })
+    Product.findByID(prodId)
+        .then(([product]) => {
+            res.render('shop/product-detail', {
+                product: product[0],
+                pageTitle: product[0].title,
+                path: '/products'
+            });
+        })
+        .catch(console.log);
 }
 
 exports.postCart = (req, res, next) => {
