@@ -13,7 +13,7 @@ const shopRoutes = require('./routes/shop');
 
 
 app.use(bodyParser.urlencoded({
-    extended: false
+  extended: false
 }));
 app.use(express.static(path.join(__dirname, 'public'))); // This will expose public folder
 
