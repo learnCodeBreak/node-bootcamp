@@ -27,15 +27,27 @@ exports.getProducts = (req, res, next) => {
 
 exports.getProduct = (req, res, next) => {
   const prodId = req.params.productId;
-  Product.findByID(prodId)
-    .then(([product]) => {
+  // METHOD - 1
+  Product.findByPk(prodId)
+    .then(product => {
       res.render('shop/product-detail', {
-        product: product[0],
-        pageTitle: product[0].title,
+        product: product,
+        pageTitle: product.title,
         path: '/products'
       });
     })
     .catch(console.log);
+
+    // // METHOD -  2
+    // Product.findAll({where: {id: prodId}})
+    //   .then(products => {
+    //     res.render('shop/product-detail', {
+    //       product: products[0],
+    //       pageTitle: products[0].title,
+    //       path: '/products'
+    //     });
+    //   })
+    //   .catch(console.log);
 }
 
 exports.postCart = (req, res, next) => {
