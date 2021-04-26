@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const errorController = require('./controllers/error');
+const sequelize = require('./util/database');
 
 const app = express();
 
@@ -23,4 +24,9 @@ app.use(shopRoutes);
 // This is a fallback route when router does not match with any path provided by user
 app.use(errorController.get404);
 
-app.listen(3000);
+// Establish the database connection and sync the database to app
+sequelize.sync()
+  .then(res => {
+    console.log(res);
+    app.listen(3000);
+  }).catch(console.log)
