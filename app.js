@@ -49,13 +49,14 @@ sequelize
     // app.listen(3000);
   })
   .then(user => {
+    // console.log(user);
     if (!user) {
-      return User.create({ name: 'Dhirendra', email: 'test@test.com' });
+      return User.create({ id: 1, name: 'Dhirendra', email: 'test@test.com' });
     }
     return user;
   })
   .then(user => {
-    console.log(user);
+    // console.log(user);
     app.listen(3000);
   })
   .catch(console.log)

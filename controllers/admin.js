@@ -14,16 +14,18 @@ exports.postAddProduct = (req, res, next) => {
   const imageUrl = req.body.imageUrl;
   const description = req.body.description;
 
-  Product.create({
-    title,
-    price,
-    imageUrl,
-    description
-  }).then(result => {
-    console.log('Product Added Successfully');
-    res.redirect('/admin/products');
-  }).catch(console.log);
-
+  req.user
+    .createProduct({
+      title,
+      price,
+      imageUrl,
+      description
+    })
+    .then(result => {
+      console.log('Product Added Successfully');
+      res.redirect('/admin/products');
+    })
+    .catch(console.log);
 }
 
 exports.getEditProduct = (req, res, next) => {
