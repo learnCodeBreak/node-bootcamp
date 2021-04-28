@@ -54,8 +54,8 @@ Order.belongsToMany(Product, { through: OrderItem });
 
 // Establish the database connection and sync the database to app
 sequelize
-  .sync({ force: true })
-  // .sync()
+  // .sync({ force: true })
+  .sync()
   .then(result => {
     return User.findByPk(1);
     // console.log(result);
