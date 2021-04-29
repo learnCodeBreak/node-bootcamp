@@ -25,30 +25,19 @@ exports.getProducts = (req, res, next) => {
     .catch(console.log);
 }
 
-// exports.getProduct = (req, res, next) => {
-//   const prodId = req.params.productId;
-//   // METHOD - 1
-//   Product.findByPk(prodId)
-//     .then(product => {
-//       res.render('shop/product-detail', {
-//         product: product,
-//         pageTitle: product.title,
-//         path: '/products'
-//       });
-//     })
-//     .catch(console.log);
+exports.getProduct = (req, res, next) => {
+  const prodId = req.params.productId;
 
-//   // // METHOD -  2
-//   // Product.findAll({where: {id: prodId}})
-//   //   .then(products => {
-//   //     res.render('shop/product-detail', {
-//   //       product: products[0],
-//   //       pageTitle: products[0].title,
-//   //       path: '/products'
-//   //     });
-//   //   })
-//   //   .catch(console.log);
-// }
+  Product.findById(prodId)
+    .then(product => {
+      res.render('shop/product-detail', {
+        product: product,
+        pageTitle: product.title,
+        path: '/products'
+      });
+    })
+    .catch(console.log);
+}
 
 // exports.postCart = (req, res, next) => {
 //   const prodId = req.body.productId;
