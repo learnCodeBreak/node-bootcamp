@@ -23,7 +23,8 @@ app.use(express.static(path.join(__dirname, 'public'))); // This will expose pub
 app.use((req, res, next) => {
   User.findById('608b41d7bfb0343c2afbfe0e') // user id is entered manually
     .then(user => {
-      req.user = user;
+      console.log(user);
+      req.user = new User(user.name, user.email, user.cart, user._id);
       next();
     })
     .catch(console.log);

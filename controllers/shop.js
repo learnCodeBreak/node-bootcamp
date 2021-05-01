@@ -39,8 +39,18 @@ exports.getProduct = (req, res, next) => {
     .catch(console.log);
 }
 
-// exports.postCart = (req, res, next) => {
-//   const prodId = req.body.productId;
+exports.postCart = (req, res, next) => {
+  const prodId = req.body.productId;
+  Product
+    .findById(prodId)
+    .then(product => {
+      return req.user.addToCart(product);
+    })
+    .then(result => {
+      console.log(result);
+    })
+    .catch(console.log);
+
 //   let fetchedCart;
 //   let newQuantity;
 
@@ -75,7 +85,7 @@ exports.getProduct = (req, res, next) => {
 //       res.redirect('/cart');
 //     })
 //     .catch(console.log);
-// }
+}
 
 // exports.getCart = (req, res, next) => {
 //   req.user
