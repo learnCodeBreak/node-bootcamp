@@ -109,21 +109,14 @@ exports.getCart = (req, res, next) => {
 //     .catch(console.log);
 // }
 
-// exports.postCartDeleteProduct = (req, res, next) => {
-//   const prodId = req.body.productId;
+exports.postCartDeleteProduct = (req, res, next) => {
+  const prodId = req.body.productId;
 
-//   req.user
-//     .getCart()
-//     .then(cart => {
-//       return cart.getProducts({ where: { id: prodId }});
-//     })
-//     .then(products => {
-//       const product = products[0];
-//       return product.cartItem.destroy();
-//     })
-//     .then(result => {
-//       console.log("Product deleted from cart succesfully");
-//       res.redirect('/cart');
-//     })
-//     .catch(console.log);
-// }
+  req.user
+    .deleteItemFromCart(prodId)
+    .then(result => {
+      console.log("Product deleted from cart succesfully");
+      res.redirect('/cart');
+    })
+    .catch(console.log);
+}
