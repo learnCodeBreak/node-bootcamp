@@ -65,18 +65,18 @@ exports.getCart = (req, res, next) => {
       .catch(console.log);
 }
 
-// exports.getOrders = (req, res, next) => {
-//   req.user
-//     .getOrders({ include: ['products'] })
-//     .then(orders => {
-//       res.render('shop/orders', {
-//         path: '/orders',
-//         pageTitle: 'Your Orders',
-//         orders: orders
-//       });
-//     })
-//     .catch(console.log);
-// }
+exports.getOrders = (req, res, next) => {
+  req.user
+    .getOrder()
+    .then(orders => {
+      res.render('shop/orders', {
+        path: '/orders',
+        pageTitle: 'Your Orders',
+        orders: orders
+      });
+    })
+    .catch(console.log);
+}
 
 exports.postOrder = (req, res, next) => {
   req.user
