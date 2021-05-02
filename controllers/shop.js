@@ -1,5 +1,6 @@
 const Product = require('../models/product');
 const Order = require('../models/order');
+const user = require('../models/user');
 
 exports.getIndex = (req, res, next) => {
   Product.find()
@@ -102,6 +103,9 @@ exports.postOrder = (req, res, next) => {
         products: products
       })
       return order.save();
+    })
+    .then(result => {
+      return req.user.clearCart();
     })
     .then(result => {
       res.redirect('/orders');
