@@ -1,9 +1,11 @@
+const path = require('path');
+
 const express = require('express');
 const bodyParser = require('body-parser');
-const path = require('path');
-const errorController = require('./controllers/error');
-
 const mongoose = require('mongoose');
+const session = require('express-session');
+
+const errorController = require('./controllers/error');
 const User = require('./models/user');
 
 const app = express();
@@ -20,6 +22,12 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(express.static(path.join(__dirname, 'public'))); // This will expose public folder
+app.use(session({
+  secret: 'my secret',
+  resave: false,
+  saveUninitialized: false
+}));
+
 
 app.use((req, res, next) => {
   User.findById('608dc9691db2f329807fd513') // user id is entered manually
@@ -47,7 +55,9 @@ mongoose.connect("mongodb+srv://node-bootcamp:node-bootcamp@cluster0.5j4dk.mongo
           const user = new User({
             name: 'dhirendra',
             email: 'dhirendra@test.com',
-            cart: { items: [] }
+            cart: {
+              items: []
+            }
           })
           user.save();
         }
