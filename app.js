@@ -13,6 +13,7 @@ app.set('views', 'views');
 
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
+const authRoutes = require('./routes/auth');
 
 
 app.use(bodyParser.urlencoded({
@@ -31,6 +32,7 @@ app.use((req, res, next) => {
 
 app.use('/admin', adminRoutes);
 app.use(shopRoutes);
+app.use(authRoutes);
 
 // This is a fallback route when router does not match with any path provided by user
 app.use(errorController.get404);
