@@ -44,21 +44,21 @@ exports.postSignup = (req, res, next) => {
         return res.redirect('/signup');
       }
 
-      return bcrypt.hash(password, 12);
-    })
-    .then(hashedPassword => {
-      const user = new User({
-        email: email,
-        password: hashedPassword,
-        cart: {
-          item: []
-        }
-      });
-      
-      return user.save();
-    })
-    .then(result => {
-      res.redirect('/login');
+      return bcrypt.hash(password, 12)
+        .then(hashedPassword => {
+          const user = new User({
+            email: email,
+            password: hashedPassword,
+            cart: {
+              item: []
+            }
+          });
+
+          return user.save();
+        })
+        .then(result => {
+          res.redirect('/login');
+        })
     })
     .catch(err => {
       console.log(err);
